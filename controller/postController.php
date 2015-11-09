@@ -10,4 +10,12 @@ class postController{
     }
     return $posts;
   }
+
+  public function getPostWithId($id){
+    $sql = "SELECT * FROM post WHERE id = '$id'";
+    $result = Flight::db()->query($sql);
+    if($result != false){
+      return new post($result->fetch_assoc());
+    }
+  }
 }
