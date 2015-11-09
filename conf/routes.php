@@ -1,3 +1,2 @@
 <?php
-Flight::route("/",function(){
-});
+Flight::route("/",array('indexController','index'));
