@@ -14,6 +14,10 @@ class post{
     $this->content = $arr['content'];
     $this->posted = $arr['posted'];
   }
+
+  function getPreview(){
+    return substr($this->content,0,100);
+  }
   /**
   * Function to store a new Post
   */
