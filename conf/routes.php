@@ -1,1 +1,3 @@
 <?php
+Flight::route("/",function(){
+});
