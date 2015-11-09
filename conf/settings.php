@@ -5,4 +5,4 @@ Flight::path("controller/");
 
 Flight::register('db','mysqli',array('localhost', 'root', '', 'blog'));
 
-Flight::regitser("util","util");
+Flight::register("util","util");
