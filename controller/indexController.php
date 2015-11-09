@@ -1,7 +1,7 @@
 <?php
 
 class indexController{
-  public function index(){
+  public static function index(){
     Flight::util()->render("index");
   }
 }
