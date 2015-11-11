@@ -21,7 +21,12 @@ class postController{
     }
     return $posts;
   }
-
+  /**
+  * Gets Post with given Id
+  * @param Int Id of searched post
+  * @return post Post with the given Id
+  * @todo Better error handling
+  */
   public function getPostWithId($post_id){
     $sql = "SELECT * FROM post WHERE id = '$post_id'";
     $result = Flight::db()->query($sql);
