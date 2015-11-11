@@ -3,6 +3,6 @@ Flight::path("model/");
 
 Flight::path("controller/");
 
-Flight::register('db','mysqli',array('localhost', 'root', '', 'blog'));
+Flight::register('db','mysqli',['localhost', 'root', '', 'blog']);
 
 Flight::register("util","util");
