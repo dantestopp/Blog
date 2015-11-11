@@ -11,9 +11,10 @@ class postController{
     return $posts;
   }
 
-  public function getPostWithId($id){
-    $sql = "SELECT * FROM post WHERE id = '$id'";
+  public function getPostWithId($post_id){
+    $sql = "SELECT * FROM post WHERE id = '$post_id'";
     $result = Flight::db()->query($sql);
+    //Todo: Better error handling
     if($result != false){
       return new post($result->fetch_assoc());
     }

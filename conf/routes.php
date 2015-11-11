@@ -1,4 +1,4 @@
 <?php
 Flight::route('/',['indexController','index']);
 
-Flight::route('/post/@id',['indexController','post']);
+Flight::route('/post/@post_id',['indexController','post']);
