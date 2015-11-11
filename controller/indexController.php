@@ -1,4 +1,11 @@
 <?php
+/**
+* Index Controller
+*
+* @author happyoniens
+* @author coeci
+*
+*/
 
 class indexController{
   public static function index(){

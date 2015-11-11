@@ -1,6 +1,13 @@
 <?php
-
+/**
+* Post Model
+*
+* @author happyoniens
+* @author coeci
+*
+*/
 class post{
+
   public $id;
   public $user;
   public $title;
@@ -14,7 +21,10 @@ class post{
     $this->content = $arr['content'];
     $this->posted = $arr['posted'];
   }
-
+  /**
+  * Get a short Preview of the Postcontent
+  * @return String First 100 Characters of Postcontent
+  */
   function getPreview(){
     return substr($this->content,0,100);
   }

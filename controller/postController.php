@@ -1,6 +1,17 @@
 <?php
-
+/**
+* Post Controller
+*
+* @author happyoniens
+* @author coeci
+*
+*/
 class postController{
+
+  /**
+  * Get all Posts from Database in Array
+  * @return Array Array with all Posts
+  */
   public function getAllPosts(){
     $sql = "SELECT * FROM post";
     $result = Flight::db()->query($sql);

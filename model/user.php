@@ -1,6 +1,13 @@
 <?php
-
+/**
+* User Model
+*
+* @author happyoniens
+* @author coeci
+*
+*/
 class user{
+  
   public $id;
   public $prename;
   public $surname;
