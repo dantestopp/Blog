@@ -9,7 +9,6 @@
 
 class indexController{
   public static function index(){
-    Flight::redirect('/post/1');
     $posts = new postController();
     $posts = $posts->getAllPosts();
     Flight::util()->render("index",["posts"=>$posts]);
