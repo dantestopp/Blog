@@ -7,6 +7,6 @@ $config = [
         "databasename" => "blog"
       ],
     "web" => [
-        "base_url" => "//localhost/Blog"
+        "base_url" => "/Blog"
       ]
   ];
