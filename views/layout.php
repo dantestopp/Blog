@@ -36,9 +36,9 @@
 	  </div><!-- /.container-fluid -->
 	</nav>
 
-
-    <?php echo $body_content; ?>
-
+    <div class="container">
+      <?php echo $body_content; ?>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="<?php Flight::link('/public/bootstrap/js/bootstrap.min.js') ?>"></script>
