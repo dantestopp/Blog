@@ -22,4 +22,14 @@ class userController{
       }
     }
 
+    public static function getUserWithEmail($email){
+      $sql = "SELECT * FROM user WHERE email = '$email'";
+      $result = Flight::db()->query($sql);
+      if($result != false){
+        return new user($result->fetch_assoc());
+      }else {
+        return false;
+      }
+    }
+
 }
