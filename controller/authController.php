@@ -12,7 +12,7 @@ class authController{
     if($user == false){
       Flight::util()->render('login',['error'=>'login']);
     }else{
-      if(password_verify($password, $user->password)){
+      if(hash("sha256",$password) == $user->password)){
         Flight::redirect("/");
       }else{
         Flight::util()->render('login',['error'=>'login']);
