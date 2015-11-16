@@ -21,4 +21,7 @@ class viewController{
     Flight::util()->render("post",["post"=>$post]);
   }
 
+  public static function login(){
+    Flight::util()->render("login");
+  }
 }
