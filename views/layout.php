@@ -19,13 +19,13 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="/Blog/">Blog</a>
+		  <a class="navbar-brand" href="<?php Flight::link('/') ?>">Blog</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		  <ul class="nav navbar-nav">
-			<li><a href="<?php Flight::link('/') ?>">Home</a></li>
+		  <?php if(Flight::has('currentUser')): ?>
 			<li><a href="<?php Flight::link('/create') ?>">New Post</a></li>
 			<li><a href="<?php Flight::link('/profile') ?>">Profile</a></li>
 		  </ul>
@@ -33,6 +33,7 @@
 			<p class="navbar-text">Signed in as Testvorname Testnachname</p>
 			<li><a href="<?php Flight::link('/profile') ?>">Logout</a></li>
 		  </ul>
+		  <?php endif; ?>
 		</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
