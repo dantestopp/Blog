@@ -31,7 +31,7 @@
 		  </ul>
 		  <ul class="nav navbar-nav navbar-right">
 			<p class="navbar-text">Signed in as Testvorname Testnachname</p>
-			<li><a href="<?php Flight::link('/profile') ?>">Logout</a></li>
+			<li><a href="<?php Flight::link('/logout') ?>">Logout</a></li>
 		  </ul>
 		  <?php endif; ?>
 		</div><!-- /.navbar-collapse -->

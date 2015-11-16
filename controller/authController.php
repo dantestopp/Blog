@@ -21,4 +21,9 @@ class authController{
     }
   }
 
+  public static function logout(){
+    unset($_SESSION['user']);
+    Flight::redirect('/');
+  }
+
 }
