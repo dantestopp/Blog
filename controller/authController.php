@@ -13,6 +13,7 @@ class authController{
       Flight::util()->render('login',['error'=>'login']);
     }else{
       if(hash("sha256",$password) == $user->password){
+        $_SESSION['user'] = $user;
         Flight::redirect("/");
       }else{
         Flight::util()->render('login',['error'=>'login']);
