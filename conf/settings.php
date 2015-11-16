@@ -8,6 +8,12 @@ Flight::register('db','mysqli',[$config['db']['host'], $config['db']['username']
 
 Flight::register("util","util");
 
+Flight::("auth","authController");
+
+Flight::("posts","postController");
+
+Flight::("users","userController");
+
 Flight::set("flight.base_url",$config['web']['base_url']);
 
 Flight::map('link',function($url){
