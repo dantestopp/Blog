@@ -24,16 +24,21 @@
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		  <ul class="nav navbar-nav">
 		  <?php if(Flight::has('currentUser')): ?>
-			<li><a href="<?php Flight::link('/create') ?>">New Post</a></li>
-			<li><a href="<?php Flight::link('/profile') ?>">Profile</a></li>
+      <ul class="nav navbar-nav">
+			     <li><a href="<?php Flight::link('/create') ?>">New Post</a></li>
+			     <li><a href="<?php Flight::link('/profile') ?>">Profile</a></li>
 		  </ul>
 		  <ul class="nav navbar-nav navbar-right">
 			<p class="navbar-text">Signed in as Testvorname Testnachname</p>
 			<li><a href="<?php Flight::link('/logout') ?>">Logout</a></li>
 		  </ul>
-		  <?php endif; ?>
+      <?php else: ?>
+        <ul class="nav navbar-nav"></ul>
+        <ul class="nav navbar-nav navbar-right">
+  			     <li><a href="<?php Flight::link('/login') ?>">Login</a></li>
+        </ul>
+      <?php endif; ?>
 		</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
