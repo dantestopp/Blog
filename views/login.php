@@ -8,7 +8,7 @@
 			<form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST" action="<?php Flight::link('/login') ?>">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-					<input id="email" type="email" class="form-control" name="emale" value="" placeholder="E-Mail">                                        
+					<input id="email" type="email" class="form-control" name="email" value="" placeholder="E-Mail">                                        
 				</div>
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
