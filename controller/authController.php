@@ -2,7 +2,7 @@
 
 class authController{
 
-  public currentUser = null;
+  public $currentUser = null;
 
   public function login(){
     $email = Flight::request()->data->email;
@@ -10,12 +10,12 @@ class authController{
 
     $user = Flight::users()->getUserWithEmail($email);
     if($user == false){
-      //Show error in Login View
+      Flight::util()->render('login',['error'=>'login']);
     }else{
       if(password_verify($password, $user->password)){
         Flight::redirect("/");
       }else{
-        //Show error in Login View
+        Flight::util()->render('login',['error'=>'login']);
       }
     }
   }
