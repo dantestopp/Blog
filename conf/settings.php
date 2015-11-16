@@ -8,11 +8,11 @@ Flight::register('db','mysqli',[$config['db']['host'], $config['db']['username']
 
 Flight::register("util","util");
 
-Flight::("auth","authController");
+Flight::register("auth","authController");
 
-Flight::("posts","postController");
+Flight::register("posts","postController");
 
-Flight::("users","userController");
+Flight::register("users","userController");
 
 Flight::set("flight.base_url",$config['web']['base_url']);
 
