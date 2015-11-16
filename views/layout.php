@@ -7,7 +7,11 @@
     <title>Blog</title>
     <link href="<?php Flight::link('/public/main.css') ?>" rel="stylesheet">
     <link href="<?php Flight::link('/public/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
-    <link href="<?php Flight::link('/public/editor/bootstrap-wysihtml5-0.0.2.css') ?>" rel="stylesheet">
+    <link href="<?php Flight::link('/public/editor/summernote.css') ?>" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="<?php Flight::link('/public/bootstrap/js/bootstrap.min.js') ?>"></script>
+    <script src="<?php Flight::link('/public/editor/summernote.min.js') ?>"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" />
   </head>
   <body>
 	<nav class="navbar navbar-default">
@@ -47,9 +51,6 @@
     <div class="container">
       <?php echo $body_content; ?>
     </div>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="<?php Flight::link('/public/bootstrap/js/bootstrap.min.js') ?>"></script>
-    <script src="<?php Flight::link('/public/editor/bootstrap-wysihtml5-0.0.2.min.js') ?>"></script>
+
   </body>
 </html>
