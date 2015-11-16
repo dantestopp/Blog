@@ -12,7 +12,7 @@ class postController{
   * Get all Posts from Database in Array
   * @return Array Array with all Posts
   */
-  public function getAllPosts(){
+  public static function getAllPosts(){
     $sql = "SELECT * FROM post";
     $result = Flight::db()->query($sql);
     $posts = [];
@@ -27,7 +27,7 @@ class postController{
   * @return post Post with the given Id
   * @todo Better error handling
   */
-  public function getPostWithId($post_id){
+  public static function getPostWithId($post_id){
     $sql = "SELECT * FROM post WHERE id = '$post_id'";
     $result = Flight::db()->query($sql);
     //Todo: Better error handling

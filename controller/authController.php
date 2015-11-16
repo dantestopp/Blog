@@ -4,7 +4,7 @@ class authController{
 
   public $currentUser = null;
 
-  public function login(){
+  public static function login(){
     $email = Flight::request()->data->email;
     $password = Flight::request()->data->password;
 
