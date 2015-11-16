@@ -1,13 +1,14 @@
 <?php
 /**
-* Index Controller
+* View Controller
 *
 * @author happyoniens
 * @author coeci
 *
 */
 
-class indexController{
+class viewController{
+
   public static function index(){
     $posts = new postController();
     $posts = $posts->getAllPosts();
@@ -19,4 +20,5 @@ class indexController{
     $post = $posts->getPostWithId($id);
     Flight::util()->render("post",["post"=>$post]);
   }
+
 }
