@@ -40,4 +40,16 @@ class viewController{
   public static function login(){
     Flight::util()->render("login");
   }
+
+  public static function author($id = null){
+      if($id == null){
+          $user = Flight::get('currentUser');
+      }else{
+          $user = Flight::users()->getUserWithId($id);
+      }
+
+      Flight::util()->render('profile',['user'=>$user]);
+
+
+  }
 }
