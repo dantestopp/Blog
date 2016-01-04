@@ -9,7 +9,7 @@
     <?php foreach($posts as $post): ?>
       <div class="blog-post">
         <h2 class="blog-post-title"><a href="<?php Flight::link('/post/'.$post->id) ?>"><?php echo $post->title; ?></a></h2>
-        <p class="blog-post-meta"><?php echo $post->posted; ?> by <a href="#">Mark</a></p>
+        <p class="blog-post-meta"><?php echo $post->posted; ?> by <a href="<?php Flight::link('/author/'.$post->user->id); ?>"><?php echo $post->user->fullName(); ?></a></p>
         <?php echo $post->getPreview(); ?>
       </div>
     <?php endforeach; ?>

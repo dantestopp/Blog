@@ -29,4 +29,8 @@ class user{
   public function store(){
 
   }
+
+  public function fullName(){
+      return $this->prename.", ".$this->surname;
+  }
 }
