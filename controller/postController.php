@@ -13,7 +13,7 @@ class postController{
   * @return Array Array with all Posts
   */
   public static function getAllPosts(){
-    $sql = "SELECT * FROM post";
+    $sql = "SELECT * FROM post ORDER BY posted DESC";
     $result = Flight::db()->query($sql);
     $posts = [];
     while($row = $result->fetch_assoc()){
