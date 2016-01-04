@@ -35,4 +35,20 @@ class postController{
       return new post($result->fetch_assoc());
     }
   }
+
+  public static function createPost(){
+      if(!Flight::has('currentUser')){
+          //show access denied view
+          die();
+      }
+
+      $post = new post([
+        'user' => Flight::get('currentUser')->id,
+        'title' => Flight::request()->data->title,
+        'content' => Flight::request()->data->content
+      ]);
+
+      $post->store();
+
+  }
 }

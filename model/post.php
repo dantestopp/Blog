@@ -15,23 +15,28 @@ class post{
   public $posted;
 
   function __construct($arr){
-    $this->id = $arr['id'];
+    $this->id = isset($arr['id'])?$arr['id']:null;
     $this->user = $arr['user'];
     $this->title = $arr['title'];
     $this->content = $arr['content'];
-    $this->posted = $arr['posted'];
+    $this->posted = isset($arr['posted'])?$arr['posted']:null;
   }
   /**
   * Get a short Preview of the Postcontent
   * @return String First 100 Characters of Postcontent
   */
-  function getPreview(){
+  public function getPreview(){
     return substr($this->content,0,100);
   }
   /**
   * Function to store a new Post
   */
-  function store(){
+  public function store(){
+      $sql = "INSERT INTO post (user, title, content) VALUE ('$this->user','$this->title','$this->content')";
+      $result = Flight::db()->query($sql);
 
+      if($result != false){
+          Flight::util()->render("post",["post"=>Flight::posts()->getPostWithId(Flight::db()->insert_id)]);
+      }
   }
 }
