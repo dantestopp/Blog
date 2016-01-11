@@ -43,7 +43,12 @@ class viewController{
 
   public static function author($id = null){
       if($id == null){
-          $user = Flight::get('currentUser');
+          if(Flight::has('currentUser')){
+            $user = Flight::get('currentUser');
+        }else{
+            Flight::redirect("/");
+        }
+
       }else{
           $user = Flight::users()->getUserWithId($id);
       }
