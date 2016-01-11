@@ -28,6 +28,7 @@ class post{
   public function getPreview(){
     return substr($this->content,0,100);
   }
+
   /**
   * Function to store a new Post
   */
@@ -39,6 +40,7 @@ class post{
           Flight::redirect("post/".Flight::db()->insert_id);
       }
   }
+
   /**
    * Get author of post
    * @return User Author
