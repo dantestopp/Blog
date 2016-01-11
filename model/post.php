@@ -16,7 +16,7 @@ class post{
 
   function __construct($arr){
     $this->id = isset($arr['id'])?$arr['id']:null;
-    $this->user = isset($arr['user'])?Flight::users()->getUserWithId($arr['user']):null;
+    $this->user = isset($arr['user'])?$arr['user']:null;
     $this->title = $arr['title'];
     $this->content = $arr['content'];
     $this->posted = isset($arr['posted'])?$arr['posted']:null;
@@ -32,11 +32,20 @@ class post{
   * Function to store a new Post
   */
   public function store(){
-      $sql = "INSERT INTO post (user, title, content) VALUE ('".$this->user->id."','".$this->title."','".$this->content."')";
+      $sql = "INSERT INTO post (user, title, content) VALUE ('".$this->getAuthor()->id."','".$this->title."','".$this->content."')";
       $result = Flight::db()->query($sql);
 
       if($result != false){
           Flight::redirect("post/".Flight::db()->insert_id);
       }
+  }
+
+  public function getAuthor(){
+      if($this->user instanceof User){
+        return $this->user;
+    }else{
+        $this->user = Flight::users()->getUserWithId($this->user);
+        return $this->user;
+    }
   }
 }
