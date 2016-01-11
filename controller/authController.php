@@ -4,6 +4,9 @@ class authController{
 
   public $currentUser = null;
 
+  /**
+   * Login with email and password
+   */
   public static function login(){
     $email = Flight::request()->data->email;
     $password = Flight::request()->data->password;
@@ -20,7 +23,10 @@ class authController{
       }
     }
   }
-
+  /**
+   * Logout function
+   * Destroy session und redirect to root
+   */
   public static function logout(){
     unset($_SESSION['user']);
     Flight::redirect('/');

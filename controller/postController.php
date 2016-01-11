@@ -21,6 +21,7 @@ class postController{
     }
     return $posts;
   }
+
   /**
   * Gets Post with given Id
   * @param Int Id of searched post
@@ -35,7 +36,9 @@ class postController{
       return new post($result->fetch_assoc());
     }
   }
-
+  /**
+   * Create a post
+   */
   public static function createPost(){
       if(!Flight::has('currentUser')){
           Flight::redirect('/');

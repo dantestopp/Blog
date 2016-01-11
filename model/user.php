@@ -29,7 +29,10 @@ class user{
   public function store(){
 
   }
-
+  /**
+   * Combination of pre- and surname
+   * @return String fullname
+   */
   public function fullName(){
       return $this->prename.", ".$this->surname;
   }

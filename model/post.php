@@ -39,7 +39,10 @@ class post{
           Flight::redirect("post/".Flight::db()->insert_id);
       }
   }
-
+  /**
+   * Get author of post
+   * @return User Author
+   */
   public function getAuthor(){
       if($this->user instanceof User){
         return $this->user;
