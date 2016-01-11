@@ -38,8 +38,7 @@ class postController{
 
   public static function createPost(){
       if(!Flight::has('currentUser')){
-          //show access denied view
-          die();
+          Flight::redirect('/');
       }
 
       $post = new post([
