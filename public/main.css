@@ -49,8 +49,7 @@
     padding-top: 0;
     overflow: hidden;
     text-align: center;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: black;
 }
 .card.hovercard .card-background {
     height: 130px;
