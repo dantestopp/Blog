@@ -1,10 +1,4 @@
 <div class="row">
-  <div class="blog-header">
-        <h1 class="blog-title">Blog Name</h1>
-        <p class="lead blog-description">Blog Description</p>
-  </div>
-</div>
-<div class="row">
   <div class="blog-main">
     <?php foreach($posts as $post): ?>
       <div class="blog-post">
