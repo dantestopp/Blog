@@ -13,7 +13,7 @@
 		$("#saveBio").click(function(){
 			$("#tab2 button").toggle();
 			$.ajax({
-				url: "<?php Flight::link("/saveprofile"); ?>",
+				url: "<?php Flight::link("/saveprofile"); ?>?bio",
 				method: 'POST',
 				data: {
 					bio: $("#bio-edit").val()
@@ -40,6 +40,31 @@
 		    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
 		    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
 		}
+
+		$("#savePassword").click(function(){
+
+			$.ajax({
+				url: "<?php Flight::link("/saveprofile"); ?>?password",
+				method: 'POST',
+				data: {
+					passwordold: 	$("#passwordold").val(),
+					passwordnew1:  $("#passwordnew1").val(),
+					passwordnew2: 	$("#passwordnew2").val()
+				}
+			}).success(function(data){
+				if(data.success == true){
+					$("#passwordalert").text("Success").removeClass("alert-danger").addClass("alert-success").show();
+					$("#passwordold").val('');
+					$("#passwordnew1").val('');
+					$("#passwordnew2").val('');
+				}else{
+					$("#passwordold").val('');
+					$("#passwordnew1").val('');
+					$("#passwordnew2").val('');
+					$("#passwordalert").text(data.exception).removeClass("alert-success").addClass("alert-danger").show();
+				}
+			});
+		});
 	});
 </script>
 
@@ -88,7 +113,23 @@
         </div>
 		<?php if(Flight::get("currentUser")->id == $user->id): ?>
 	        <div class="tab-pane fade in" id="tab3">
-	          <h3>Password</h3>
+					<div id="passwordalert" style="display:none" class="alert alert-danger" role="alert"></div>
+		          <h3>Change Password:</h3>
+				  <div class="input-group">
+					  <span class="input-group-addon" id="label-oldpassword">Old Password</span>
+					  <input type="password" class="form-control" id="passwordold" placeholder="Old Password" aria-describedby="label-oldpassword">
+				  </div>
+				  <div class="input-group">
+					  <span class="input-group-addon" id="label-new1password">New Password</span>
+					  <input type="password" class="form-control" id="passwordnew1" placeholder="New Password" aria-describedby="label-new1password">
+				  </div>
+				  <div class="input-group">
+					  <span class="input-group-addon" id="label-new2password">Repeat Password</span>
+					  <input type="password" class="form-control" id="passwordnew2" placeholder="Repeat Password" aria-describedby="label-new2password">
+				  </div>
+				  <div class="input-group">
+				  	<button id="savePassword" type="button" class="btn btn-success">Save</button>
+			  	  </div>
 	        </div>
 		<?php endif; ?>
       </div>
