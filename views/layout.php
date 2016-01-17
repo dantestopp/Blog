@@ -12,8 +12,16 @@
     <script src="<?php Flight::link('/public/bootstrap/js/bootstrap.min.js') ?>"></script>
     <script src="<?php Flight::link('/public/editor/summernote.min.js') ?>"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" />
+    <script src="<?php Flight::link('/public/moment/moment.js'); ?>"></script>
   </head>
   <body>
+  <script>
+    $(document).ready(function(){
+        $(".time").each(function(){
+            $(this).text(moment($(this).attr('timestamp')).from());
+        });
+    });
+  </script>
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->

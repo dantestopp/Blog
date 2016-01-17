@@ -2,7 +2,7 @@
   <div class="blog-main">
       <div class="blog-post">
         <h1 class="blog-post-title"><?php echo $post->title; ?></h1>
-        <p class="blog-post-meta"><?php echo $post->posted; ?> by <a href="<?php Flight::link('/author/'.$post->getAuthor()->id); ?>"><?php echo $post->getAuthor()->fullName(); ?></a></p>
+        <p class="blog-post-meta"><span class="time" timestamp="<?php echo $post->posted; ?>"><?php echo $post->posted; ?></span> by <a href="<?php Flight::link('/author/'.$post->getAuthor()->id); ?>"><?php echo $post->getAuthor()->fullName(); ?></a></p>
         <?php echo $post->content; ?>
       </div>
   </div>
