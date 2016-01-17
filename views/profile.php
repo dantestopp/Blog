@@ -1,10 +1,70 @@
 <script type="text/javascript">
 	$(document).ready(function() {
-	$(".btn-pref .btn").click(function () {
-		$(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
-		// $(".tab").addClass("active"); // instead of this do the below 
-		$(this).removeClass("btn-default").addClass("btn-primary");   
-	});
+		$(".btn-pref .btn").click(function () {
+			$(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
+			$(this).removeClass("btn-default").addClass("btn-primary");
+		});
+
+		$("#updateBio").click(function(){
+			$("#bio-edit").text($("#bio").hide().text()).show().width("90%").height("100px");
+			$("#tab2 button").toggle();
+		});
+
+		$("#saveBio").click(function(){
+			$("#tab2 button").toggle();
+			$.ajax({
+				url: "<?php Flight::link("/saveprofile"); ?>?bio",
+				method: 'POST',
+				data: {
+					bio: $("#bio-edit").val()
+				}
+			}).success(function(d){
+				if(d.success == true){
+					$("#bio").html(nl2br($("#bio-edit").hide().val())).show();
+				}else{
+					alert(d.exception);
+				}
+
+			}).error(function(err){
+				alert(err);
+			});
+		});
+
+		$("#cancelBio").click(function(){
+			$("#bio").show();
+			$("#bio-edit").hide();
+			$("#tab2 button").toggle();
+		});
+
+		function nl2br (str, is_xhtml) {
+		    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+		    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+		}
+
+		$("#savePassword").click(function(){
+
+			$.ajax({
+				url: "<?php Flight::link("/saveprofile"); ?>?password",
+				method: 'POST',
+				data: {
+					passwordold: 	$("#passwordold").val(),
+					passwordnew1:  $("#passwordnew1").val(),
+					passwordnew2: 	$("#passwordnew2").val()
+				}
+			}).success(function(data){
+				if(data.success == true){
+					$("#passwordalert").text("Success").removeClass("alert-danger").addClass("alert-success").show();
+					$("#passwordold").val('');
+					$("#passwordnew1").val('');
+					$("#passwordnew2").val('');
+				}else{
+					$("#passwordold").val('');
+					$("#passwordnew1").val('');
+					$("#passwordnew2").val('');
+					$("#passwordalert").text(data.exception).removeClass("alert-success").addClass("alert-danger").show();
+				}
+			});
+		});
 	});
 </script>
 
@@ -29,13 +89,13 @@
                 <div class="hidden-xs">Bio</div>
             </button>
         </div>
-		<?php if(Flight::get("currentUser")->id == $user->id){ ?>
-        <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                <div class="hidden-xs">Password</div>
-            </button>
-        </div>
-		<?php } ?>
+		<?php if(Flight::get("currentUser")->id == $user->id): ?>
+	        <div class="btn-group" role="group">
+	            <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+	                <div class="hidden-xs">Password</div>
+	            </button>
+	        </div>
+		<?php endif; ?>
     </div>
 
     <div class="well">
@@ -45,11 +105,33 @@
 			<a href="mailto:<?php echo $user->email; ?>"><?php echo $user->email; ?></a>
         </div>
         <div class="tab-pane fade in" id="tab2">
-			<p><?php echo $user->bio; ?></p>
+			<p id="bio"><?php echo $user->bio; ?></p>
+			<textarea id="bio-edit" style="display:none"></textarea>
+			<button id="updateBio" type="button" class="btn btn-success">Update</button>
+			<button id="saveBio" type="button" class="btn btn-success" style="display:none">Save</button>
+			<button id="cancelBio" type="button" class="btn btn-danger" style="display:none">Cancel</button>
         </div>
-        <div class="tab-pane fade in" id="tab3">
-          <h3>Password</h3>
-        </div>
+		<?php if(Flight::get("currentUser")->id == $user->id): ?>
+	        <div class="tab-pane fade in" id="tab3">
+					<div id="passwordalert" style="display:none" class="alert alert-danger" role="alert"></div>
+		          <h3>Change Password:</h3>
+				  <div class="input-group">
+					  <span class="input-group-addon" id="label-oldpassword">Old Password</span>
+					  <input type="password" class="form-control" id="passwordold" placeholder="Old Password" aria-describedby="label-oldpassword">
+				  </div>
+				  <div class="input-group">
+					  <span class="input-group-addon" id="label-new1password">New Password</span>
+					  <input type="password" class="form-control" id="passwordnew1" placeholder="New Password" aria-describedby="label-new1password">
+				  </div>
+				  <div class="input-group">
+					  <span class="input-group-addon" id="label-new2password">Repeat Password</span>
+					  <input type="password" class="form-control" id="passwordnew2" placeholder="Repeat Password" aria-describedby="label-new2password">
+				  </div>
+				  <div class="input-group">
+				  	<button id="savePassword" type="button" class="btn btn-success">Save</button>
+			  	  </div>
+	        </div>
+		<?php endif; ?>
       </div>
     </div>
 </div>

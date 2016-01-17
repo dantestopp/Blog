@@ -16,3 +16,5 @@ Flight::route('GET /login',['viewController','login']);
 Flight::route('POST /login',['authController','login']);
 
 Flight::route('GET /logout',['authController','logout']);
+
+Flight::route('POST /saveprofile',['userController','saveProfile']);

@@ -35,7 +35,7 @@
 			     <li><a href="<?php Flight::link('/profile') ?>">Profile</a></li>
 		  </ul>
 		  <ul class="nav navbar-nav navbar-right">
-			<p class="navbar-text">Signed in as <?php echo Flight::get('currentUser')->prename." ".Flight::get('currentUser')->surname ?></p>
+			<p class="navbar-text">Signed in as <?php echo Flight::get('currentUser')->fullName(); ?></p>
 			<li><a href="<?php Flight::link('/logout') ?>">Logout</a></li>
 		  </ul>
       <?php else: ?>
