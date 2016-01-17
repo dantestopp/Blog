@@ -89,7 +89,7 @@
                 <div class="hidden-xs">Bio</div>
             </button>
         </div>
-		<?php if(Flight::get("currentUser")->id == $user->id): ?>
+		<?php if(Flight::has('currentUser') && Flight::get("currentUser")->id == $user->id): ?>
 	        <div class="btn-group" role="group">
 	            <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
 	                <div class="hidden-xs">Password</div>
@@ -106,12 +106,14 @@
         </div>
         <div class="tab-pane fade in" id="tab2">
 			<p id="bio"><?php echo $user->bio; ?></p>
-			<textarea id="bio-edit" style="display:none"></textarea>
-			<button id="updateBio" type="button" class="btn btn-success">Update</button>
-			<button id="saveBio" type="button" class="btn btn-success" style="display:none">Save</button>
-			<button id="cancelBio" type="button" class="btn btn-danger" style="display:none">Cancel</button>
+			<?php if(Flight::has('currentUser') && Flight::get("currentUser")->id == $user->id): ?>
+				<textarea id="bio-edit" style="display:none"></textarea>
+				<button id="updateBio" type="button" class="btn btn-success">Update</button>
+				<button id="saveBio" type="button" class="btn btn-success" style="display:none">Save</button>
+				<button id="cancelBio" type="button" class="btn btn-danger" style="display:none">Cancel</button>
+			<?php endif; ?>
         </div>
-		<?php if(Flight::get("currentUser")->id == $user->id): ?>
+		<?php if(Flight::has('currentUser') && Flight::get("currentUser")->id == $user->id): ?>
 	        <div class="tab-pane fade in" id="tab3">
 					<div id="passwordalert" style="display:none" class="alert alert-danger" role="alert"></div>
 		          <h3>Change Password:</h3>

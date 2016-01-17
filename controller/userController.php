@@ -43,6 +43,10 @@ class userController{
      */
     public static function saveProfile(){
 
+        if(!Flight::has('currentUser')){
+            Flight::json(['Error'=>'No Access']);
+        }
+        
         $currentUser = Flight::get('currentUser');
 
         if(isset(Flight::request()->query->bio)){
