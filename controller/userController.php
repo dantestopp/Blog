@@ -22,6 +22,11 @@ class userController{
       }
     }
 
+    /**
+     * Get User with Email
+     * @param  String $email Email
+     * @return Object Return userobject or false
+     */
     public static function getUserWithEmail($email){
       $sql = "SELECT * FROM user WHERE email = '$email'";
       $result = Flight::db()->query($sql);

@@ -23,22 +23,21 @@ class user{
     $this->email = $arr['email'];
     $this->password = $arr['password'];
   }
+
   /**
-  * Function to store a new User
-  */
-  public function store(){
-
-  }
-
+   * Update user
+   * @return Mysqliresult Result from query
+   */
   public function update(){
 
       $sql = "UPDATE user SET prename = '$this->prename', surname = '$this->surname', bio = '".nl2br($this->bio)."', email = '$this->email', password = '$this->password' WHERE id = '$this->id'";
-      
+
       $result = Flight::db()->query($sql);
 
       return $result;
 
   }
+  
   /**
    * Combination of pre- and surname
    * @return String fullname
