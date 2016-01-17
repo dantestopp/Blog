@@ -13,14 +13,14 @@
 		$("#saveBio").click(function(){
 			$("#tab2 button").toggle();
 			$.ajax({
-				url: "<?php Flight::link("/savebio"); ?>",
+				url: "<?php Flight::link("/saveprofile"); ?>",
 				method: 'POST',
 				data: {
-					bio: $("#bio-edit").text()
+					bio: $("#bio-edit").val()
 				}
 			}).success(function(d){
 				if(d.success == true){
-					$("#bio").text($("#bio-edit").hide().val()).show();
+					$("#bio").html(nl2br($("#bio-edit").hide().val())).show();
 				}else{
 					alert(d.exception);
 				}
@@ -35,6 +35,11 @@
 			$("#bio-edit").hide();
 			$("#tab2 button").toggle();
 		});
+
+		function nl2br (str, is_xhtml) {
+		    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+		    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+		}
 	});
 </script>
 

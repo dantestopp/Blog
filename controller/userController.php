@@ -32,14 +32,19 @@ class userController{
       }
     }
 
-    public static function saveBio(){
+    /**
+     * Save properties of the user profile
+     * @return [JSON] Success or error message
+     */
+    public static function saveProfile(){
 
         $currentUser = Flight::get('currentUser');
 
         $currentUser->bio = Flight::request()->data->bio;
+        $currentUser->password = hash("sha256", Flight::request()->data->password);
 
         $result = $currentUser->update();
-
+        
         if($result != false){
             $_SESSION['user'] = Flight::users()->getUserWithId(Flight::get('currentUser')->id);
 
