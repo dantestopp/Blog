@@ -115,20 +115,23 @@
         </div>
 		<?php if(Flight::has('currentUser') && Flight::get("currentUser")->id == $user->id): ?>
 	        <div class="tab-pane fade in" id="tab3">
-					<div id="passwordalert" style="display:none" class="alert alert-danger" role="alert"></div>
+				  <div id="passwordalert" style="display:none" class="alert alert-danger" role="alert"></div>
 		          <h3>Change Password:</h3>
 				  <div class="input-group">
 					  <span class="input-group-addon" id="label-oldpassword">Old Password</span>
 					  <input type="password" class="form-control" id="passwordold" placeholder="Old Password" aria-describedby="label-oldpassword">
 				  </div>
+				  <br>
 				  <div class="input-group">
 					  <span class="input-group-addon" id="label-new1password">New Password</span>
 					  <input type="password" class="form-control" id="passwordnew1" placeholder="New Password" aria-describedby="label-new1password">
 				  </div>
+				  <br>
 				  <div class="input-group">
 					  <span class="input-group-addon" id="label-new2password">Repeat Password</span>
 					  <input type="password" class="form-control" id="passwordnew2" placeholder="Repeat Password" aria-describedby="label-new2password">
 				  </div>
+				  <br>
 				  <div class="input-group">
 				  	<button id="savePassword" type="button" class="btn btn-success">Save</button>
 			  	  </div>
