@@ -32,4 +32,22 @@ class userController{
       }
     }
 
+    public static function saveBio(){
+
+        $currentUser = Flight::get('currentUser');
+
+        $currentUser->bio = Flight::request()->data->bio;
+
+        $result = $currentUser->update();
+
+        if($result != false){
+            $_SESSION['user'] = Flight::users()->getUserWithId(Flight::get('currentUser')->id);
+
+
+            Flight::json(['success'=>true, 'user'=> $_SESSION['user']]);
+        }else{
+            Flight::json(['sucess' => false, "exception" => 'An error']);
+        }
+    }
+
 }

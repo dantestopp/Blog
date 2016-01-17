@@ -1,10 +1,40 @@
 <script type="text/javascript">
 	$(document).ready(function() {
-	$(".btn-pref .btn").click(function () {
-		$(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
-		// $(".tab").addClass("active"); // instead of this do the below 
-		$(this).removeClass("btn-default").addClass("btn-primary");   
-	});
+		$(".btn-pref .btn").click(function () {
+			$(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
+			$(this).removeClass("btn-default").addClass("btn-primary");
+		});
+
+		$("#updateBio").click(function(){
+			$("#bio-edit").text($("#bio").hide().text()).show().width("90%").height("100px");
+			$("#tab2 button").toggle();
+		});
+
+		$("#saveBio").click(function(){
+			$("#tab2 button").toggle();
+			$.ajax({
+				url: "<?php Flight::link("/savebio"); ?>",
+				method: 'POST',
+				data: {
+					bio: $("#bio-edit").text()
+				}
+			}).success(function(d){
+				if(d.success == true){
+					$("#bio").text($("#bio-edit").hide().val()).show();
+				}else{
+					alert(d.exception);
+				}
+
+			}).error(function(err){
+				alert(err);
+			});
+		});
+
+		$("#cancelBio").click(function(){
+			$("#bio").show();
+			$("#bio-edit").hide();
+			$("#tab2 button").toggle();
+		});
 	});
 </script>
 
@@ -29,13 +59,13 @@
                 <div class="hidden-xs">Bio</div>
             </button>
         </div>
-		<?php if(Flight::get("currentUser")->id == $user->id){ ?>
-        <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                <div class="hidden-xs">Password</div>
-            </button>
-        </div>
-		<?php } ?>
+		<?php if(Flight::get("currentUser")->id == $user->id): ?>
+	        <div class="btn-group" role="group">
+	            <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+	                <div class="hidden-xs">Password</div>
+	            </button>
+	        </div>
+		<?php endif; ?>
     </div>
 
     <div class="well">
@@ -45,11 +75,17 @@
 			<a href="mailto:<?php echo $user->email; ?>"><?php echo $user->email; ?></a>
         </div>
         <div class="tab-pane fade in" id="tab2">
-			<p><?php echo $user->bio; ?></p>
+			<p id="bio"><?php echo $user->bio; ?></p>
+			<textarea id="bio-edit" style="display:none"></textarea>
+			<button id="updateBio" type="button" class="btn btn-success">Update</button>
+			<button id="saveBio" type="button" class="btn btn-success" style="display:none">Save</button>
+			<button id="cancelBio" type="button" class="btn btn-danger" style="display:none">Cancel</button>
         </div>
-        <div class="tab-pane fade in" id="tab3">
-          <h3>Password</h3>
-        </div>
+		<?php if(Flight::get("currentUser")->id == $user->id): ?>
+	        <div class="tab-pane fade in" id="tab3">
+	          <h3>Password</h3>
+	        </div>
+		<?php endif; ?>
       </div>
     </div>
 </div>
