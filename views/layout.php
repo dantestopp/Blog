@@ -17,8 +17,8 @@
   <body>
   <script>
     $(document).ready(function(){
-        $(".time").each(function(){
-            $(this).text(moment($(this).attr('timestamp')).from());
+        $("time").each(function(){
+            $(this).text(moment($(this).attr('datetime')).from());
         });
     });
   </script>
