@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 18. Jan 2016 um 11:29
+-- Erstellungszeit: 18. Jan 2016 um 11:34
 -- Server-Version: 10.0.17-MariaDB
 -- PHP-Version: 5.6.14
 
@@ -46,7 +46,8 @@ CREATE TABLE `user` (
   `surname` varchar(255) NOT NULL,
   `bio` varchar(1023) DEFAULT NULL,
   `password` varchar(64) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `email` varchar(255) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
