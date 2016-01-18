@@ -14,6 +14,7 @@ class user{
   public $bio;
   public $email;
   public $password;
+  public $created;
 
   function __construct($arr){
     $this->id = $arr['id'];
@@ -22,6 +23,7 @@ class user{
     $this->bio = $arr['bio'];
     $this->email = $arr['email'];
     $this->password = $arr['password'];
+    $this->created = $arr['created'];
   }
 
   /**
@@ -37,7 +39,7 @@ class user{
       return $result;
 
   }
-  
+
   /**
    * Combination of pre- and surname
    * @return String fullname

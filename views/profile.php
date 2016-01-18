@@ -103,6 +103,7 @@
         <div class="tab-pane fade in active" id="tab1">
 			<h3>Name: <?php echo $user->fullName(); ?></h3><br>
 			<a href="mailto:<?php echo $user->email; ?>"><?php echo $user->email; ?></a>
+			<h3>Joined: <time datetime="<?php echo $user->created;?>"><?php echo $user->created;?></time></h3>
         </div>
         <div class="tab-pane fade in" id="tab2">
 			<p id="bio"><?php echo $user->bio; ?></p>
